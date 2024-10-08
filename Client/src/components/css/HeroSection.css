@@ -1,0 +1,123 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* General hero section styling */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  height: 90vh;
+  background-color: #242424; /* Light grey background */
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Hero content styling */
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+  animation: fadeInLeft 1s ease-in-out;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: #1e90ff; /* Blue color */
+  margin-bottom: 20px;
+  animation: slideInDown 1s ease-in-out;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  animation: fadeInUp 1.2s ease-in-out;
+}
+
+.hero-btn {
+  padding: 15px 30px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeInUp 1.4s ease-in-out;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  background-color: #0c6ebe; /* Darker blue on hover */
+}
+
+/* Hero image styling */
+.hero-image img {
+  max-width: 500px;
+  animation: fadeInRight 1s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+}

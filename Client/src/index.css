@@ -1,0 +1,51 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Apply the Poppins font family globally (since you like Poppins) */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #242424; /* Dark mode background */
+    color: #ffffff; /* Text color for dark mode */
+  }
+  
+  /* Styling for links */
+  a {
+    color: #1e90ff; /* Blue color for links */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Basic styling for buttons */
+  button {
+    background-color: #1e90ff; /* Blue button color */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0c6ebe; /* Darker blue on hover */
+  }
+  
+  /* General container styling */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Simple styling for headers */
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
+    color: #ffffff;
+  }
+  

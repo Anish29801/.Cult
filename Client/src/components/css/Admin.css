@@ -1,0 +1,44 @@
+/* Admin.css */
+
+.admin-container {
+    padding: 20px;
+  }
+  
+  .admin-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .submissions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .submission-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .submission-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .submission-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .submission-card p {
+    margin: 5px 0;
+  }
+  
+  .submission-card strong {
+    font-weight: bold;
+  }
+  

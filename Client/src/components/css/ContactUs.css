@@ -1,0 +1,93 @@
+/* General Contact Us Section Styling */
+.contact-us {
+    padding: 50px;
+    background-color: #242424;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-us h2 {
+    font-size: 2.5rem;
+    color: #1e90ff;
+    margin-bottom: 20px;
+  }
+  
+  .contact-us p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+  
+  /* Contact Form */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    color: #ffff;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #1e90ff;
+  }
+  
+  .submit-btn {
+    padding: 12px 20px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0c6ebe;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .contact-us {
+      padding: 30px;
+    }
+  
+    .contact-us h2 {
+      font-size: 2rem;
+    }
+  
+    .contact-us p {
+      font-size: 1rem;
+    }
+  
+    .submit-btn {
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,0 +1,70 @@
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* General styling for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+}
+
+/* Logo styling */
+.logo h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1e90ff; /* Blue text color */
+}
+
+/* Styling for the list of links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links li a {
+  color: #1e90ff; /* Blue text color */
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.nav-links li a:hover {
+  color: #0c6ebe; /* Darker blue on hover */
+}
+
+li:hover{
+  cursor: pointer;
+}
+.call-now-btn {
+  background-color: transparent;
+  color: #1e90ff; /* Blue text color */
+  padding: 10px 20px;
+  border: 2px solid #1e90ff;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.call-now-btn:hover {
+  background-color: #1e90ff; /* Blue background on hover */
+  color: white; /* White text on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    margin-top: 15px;
+  }
+
+  .call-now-btn {
+    margin-top: 10px;
+  }
+}

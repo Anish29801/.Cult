@@ -1,0 +1,132 @@
+/* General about us section styling */
+.about-us {
+    padding: 50px;
+    background-color: #242424;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
+
+.about-content {
+    max-width: 900px;
+    margin-bottom: 50px;
+}
+
+.about-content h2 {
+    font-size: 2.5rem;
+    color: #1e90ff;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-content strong {
+    color: #1e90ff;
+}
+
+/* Plan Section */
+.about-plans {
+    text-align: center;
+}
+
+.about-plans h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #1e90ff;
+}
+
+.plans-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.plan-card {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.plan-card h4 {
+    font-size: 1.8rem;
+    color: #1e90ff;
+    margin-bottom: 15px;
+}
+
+.plan-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Custom bullet point with SVG blue checkmark */
+.plan-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.plan-card ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+    padding-left: 30px;
+    position: relative;
+}
+
+.plan-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%231e90ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"/></svg>');
+}
+
+/* Button styling */
+.plan-btn {
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.plan-btn:hover {
+    background-color: #0c6ebe;
+}
+
+/* Card hover effect */
+.plan-card:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-content {
+        text-align: center;
+    }
+
+    .plans-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan-card {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}

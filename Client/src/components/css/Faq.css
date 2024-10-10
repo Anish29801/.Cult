@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-bottom: 1px solid #1e90ff;
+  position: relative;
+}
+
+.faq-question {
+  font-size: 1.2em;
+  font-weight: 600; /* Bold */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-weight: 700;
+}
+
+.faq-answer {
+  font-size: 1em;
+  font-weight: 400; /* Normal */
+  color: #ffffff;
+  display: none; /* Initially hide the answer */
+  margin-top: 10px; /* Add some spacing */
+}
+
+.faq-item:hover .faq-answer,
+.faq-item:focus-within .faq-answer {
+  display: block; /* Show answer on hover or focus */
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import './css/Navbar.css';
-import { Link } from 'react-scroll';
+import { Link } from 'react-scroll'; // Use for smooth scroll for other links
+import { NavLink } from 'react-router-dom'; // Use for routing
+import BMI from './BMI';
 
 const Navbar = () => {
   return (
@@ -30,6 +32,24 @@ const Navbar = () => {
           >
             About
           </Link>
+        </li>
+        {/* Shop Route */}
+        <li>
+          <NavLink 
+            to="/shop" 
+            activeClassName="active" // Optional: To style active link
+          >
+            Shop
+          </NavLink>
+        </li>
+        {/* BMI Route */}
+        <li>
+          <NavLink 
+            to="/bmi"
+            activeClassName="active"
+          >
+            BMI
+          </NavLink>
         </li>
         <li>
           <Link 

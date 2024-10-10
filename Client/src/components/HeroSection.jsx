@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/HeroSection.css';
-import fitnessImage from './css/img/fitness.png';
+import fitnessImage from './css/img/fitness.svg';
 
 const HeroSection = () => {
   return (

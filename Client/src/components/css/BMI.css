@@ -1,0 +1,158 @@
+p,.header{
+  padding-top: 10px;
+}
+  .bmi-container {
+    display: flex;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation for the whole container */
+  }
+  
+  #gender {
+    padding: 10px;
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    font-size: 16px;
+    color: #333; /* Text color */
+    appearance: none; /* Remove default browser arrow for select */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: border-color 0.3s ease; /* Smooth transition for border */
+  }
+  
+  #gender:hover, #gender:focus {
+    border-color: #1e90ff; /* Border color change on hover and focus */
+    outline: none; /* Remove default outline */
+  }
+  
+
+  .bmi-image {
+    flex: 1;
+    margin-right: 20px;
+    animation: slideInLeft 1s ease-in-out; /* Slide-in animation for image */
+  }
+  
+  .bmi-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .bmi-form {
+    flex: 1;
+    text-align: left;
+    animation: slideInRight 1s ease-in-out; /* Slide-in animation for the form */
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  input {
+    padding: 10px;
+    width: 100%;
+    margin-top: 5px;
+  }
+  
+  .calculate-btn {
+    padding: 10px 20px;
+    background-color: #10b981;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease; /* Add hover effect transition */
+  }
+  
+  .calculate-btn:hover {
+    background-color: #0d8b67; /* Darken the button on hover */
+  }
+  
+  .bmi-result {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards; /* Fade-in result animation */
+  }
+  
+  .book-session-btn {
+    padding: 10px 20px;
+    background-color: #f1300a;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-session-btn:hover {
+    background-color: #d02b08; /* Darken button on hover */
+  }
+  
+  .header {
+    color: #1e90ff;
+    animation: fadeInDown 1s ease-in-out; /* Fade-in animation for header */
+  }
+  
+  /* Keyframes for animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .call-doctor-btn {
+    padding: 10px 20px;
+    background-color: #ff0000; /* Red background */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  

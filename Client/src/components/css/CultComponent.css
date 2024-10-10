@@ -1,0 +1,77 @@
+/* Container styling */
+.cult-container {
+    position: relative;
+    background-color: #001f3f; /* Dark blue background */
+    color: #fff; /* White text */
+    height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+  /* Background gradient lines */
+  .background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .background-gradient::before,
+  .background-gradient::after {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 25%;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.6;
+  }
+  
+  /* Updated gradient for blue theme */
+  .background-gradient::before {
+    background: linear-gradient(45deg, #095cd2, #6f07e5, #10b981); /* Blue and green tones */
+    top: 30%;
+    left: 0;
+    transform: rotate(45deg);
+  }
+  
+  .background-gradient::after {
+    background: linear-gradient(-45deg, #0a81d2, #095cd2, #10b981); /* Blue and green tones */
+    bottom: 30%;
+    right: 0;
+    transform: rotate(-45deg);
+  }
+  
+  /* Text content styling */
+  .text-content {
+    position: relative;
+    z-index: 2; /* Make sure the text is above the background gradient */
+    text-align: center;
+  }
+  
+  .main-heading {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #00aaff; /* Light blue color for the "cult" text */
+  }
+  
+  .description {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  
+  .hashtag {
+    font-weight: bold;
+    color: #00aaff; /* Light blue for hashtag */
+  }
+  

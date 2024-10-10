@@ -11,6 +11,20 @@
     margin-bottom: 50px;
 }
 
+.inline-image-left {
+    float: left;
+    margin-right: 15px;
+    max-width: 150px;
+    border-radius: 8px;
+  }
+  
+  .inline-image-right {
+    float: right;
+    margin-left: 15px;
+    max-width: 150px;
+    border-radius: 8px;
+  }
+  
 .about-content h2 {
     font-size: 2.5rem;
     color: #1e90ff;

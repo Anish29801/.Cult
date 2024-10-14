@@ -59,6 +59,14 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink 
+            to="/mind"
+            activeClassName="active"
+          >
+          Mind
+          </NavLink>
+        </li>
+        <li>
           <Link 
             to="contact" 
             spy={true} 

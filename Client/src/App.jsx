@@ -5,6 +5,7 @@ import Shop from './components/Shop.jsx';
 import BMI from './components/BMI.jsx';
 import Lab from './components/Lab.jsx';
 import Admin from './components/Admin.jsx';
+import Mind from './components/Mind.jsx';
 import CultComponent from './components/CultComponent.jsx';
 import SaleTimerBanner from './components/SaleTimerBanner.jsx';
 
@@ -33,6 +34,8 @@ const App = () => {
           <Route path="/bmi" element={<BMI />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/lab" element={<Lab />} />
+          <Route path="/mind" element={<Mind />} />
+
 
         </Routes>
       </div>

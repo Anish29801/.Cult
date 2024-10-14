@@ -1,77 +1,18 @@
-const sampleProducts = [
-  {
-    "name": "Yoga Mat",
-    "vendor": ".Cult",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZyGKjbQrUqaRL3ocZhiNTe_hGKj0QEfLK3A&s",
-    "price": 1200,
-    "quantity": 50
-  },
-  {
-    "name": "Resistance Bands",
-    "vendor": ".Cult",
-    "image": "https://m.media-amazon.com/images/I/61JYu4FWsJL.jpg",
-    "price": 600,
-    "quantity": 30
-  },
-  {
-    "name": "Dumbbells",
-    "vendor": ".Cult",
-    "image": "https://m.media-amazon.com/images/I/61me6zhmaDL.jpg",
-    "price": 1400,
-    "quantity": 25
-  },
-  {
-    "name": "Running Shoes",
-    "vendor": ".Cult",
-    "image": "https://assets.myntassets.com/h_480,q_100,w_360/v1/assets/images/12544338/2022/6/14/c4890db0-a432-4f82-a8b8-96f046b272b91655192914825-HRX-by-Hrithik-Roshan-Men-Navy-Blue-Running-Shoes-1721655192-1.jpg",
-    "price": 1300,
-    "quantity": 40
-  },
-  {
-    "name": "Sunglasses",
-    "vendor": ".Cult",
-    "image": "https://i.pinimg.com/originals/62/9d/fb/629dfbe706870a8a68a020afc8faf020.jpg",
-    "price": 800,
-    "quantity": 20
-  },
-  {
-    "name": "Track Pants",
-    "vendor": ".Cult",
-    "image": "https://assets.myntassets.com/h_480,q_100,w_360/v1/assets/images/23802822/2023/10/17/38ad9c61-a74f-4471-9b19-a0d9527a68cd1697532908809-HRX-by-Hrithik-Roshan-Men-Track-Pants-8081697532908302-3.jpg",
-    "price": 1000,
-    "quantity": 35
-  },
-  {
-    "name": "T-shirt",
-    "vendor": ".Cult",
-    "image": "https://rukminim1.flixcart.com/image/400/400/t-shirt/y/e/a/1128683-hrx-by-hrithik-roshan-xl-original-imaegpvhdprxddyd.jpeg?q=90",
-    "price": 900,
-    "quantity": 60
-  },
-  {
-    "name": "Printed T-shirt",
-    "vendor": ".Cult",
-    "image": "https://meynard-testing.myshopify.com/cdn/shop/products/HRX-Men-Grey-Printed-T-shirt_229cc883f846a988bf3debb018afdaed_images_360_480_mini_large.jpeg?v=1571439126",
-    "price": 700,
-    "quantity": 45
-  },
-  {
-    "name": "Graphic T-shirt",
-    "vendor": ".Cult",
-    "image": "https://rukminim1.flixcart.com/image/300/300/t-shirt/b/y/t/1127416-hrx-by-hrithik-roshan-xxl-original-imaegdwmzwhcysq7.jpeg?q=90",
-    "price": 500,
-    "quantity": 12
-  }
-]
-
 const express = require("express");
+const Razorpay = require('razorpay');
 const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
+const crypto = require('crypto');
 
 // Middleware to parse JSON
 app.use(express.json());
+
+const razorpayInstance = new Razorpay({
+  key_id: 'YOUR_RAZORPAY_KEY_ID',
+  key_secret: 'YOUR_RAZORPAY_KEY_SECRET',
+});
 
 // Set up CORS
 const corsOptions = {
@@ -114,16 +55,50 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model("Product", productSchema);
 
-// Function to add multiple products
-const addProducts = async (productsArray) => {
+// Lab Schema
+const labSchema = new mongoose.Schema({
+  testName: { type: String, required: true },
+  description: { type: String, required: true },
+  Orignalprice: { type: Number, required: true },
+  Saleprice: { type: Number, required: true },
+  image: { type: String, required: true },
+  available: { type: Boolean, default: true }
+}, { timestamps: true });
+
+const Lab = mongoose.model("Lab", labSchema);
+
+// Function to add multiple lab entries
+const addLabs = async (labsArray) => {
   try {
-    await Product.insertMany(productsArray);
-    console.log("Products successfully added to the database.");
+    await Lab.insertMany(labsArray);
+    console.log("Labs successfully added to the database.");
   } catch (err) {
-    console.error("Error adding products:", err);
-    throw new Error("Could not add products to the database.");
+    console.error("Error adding labs:", err);
+    throw new Error("Could not add labs to the database.");
   }
 };
+
+const addMinds = async (MindsArray) => {
+  try {
+    await Mind.insertMany(MindsArray);
+    console.log("Minds successfully added to the database.");
+  } catch (err) {
+    console.error("Error adding labs:", err);
+    throw new Error("Could not add labs to the database.");
+  }
+};
+
+// Mind Schema
+const mindSchema = new mongoose.Schema({
+  Name: { type: String, required: true },
+  description: { type: String, required: true },
+  image: { type: String, required: true },
+  videoUrl: { type: String, required: true },
+  available: { type: Boolean, default: true }
+}, { timestamps: true });
+
+const Mind = mongoose.model("Mind", mindSchema);
+
 
 // Start the server
 app.listen(4000, () => {
@@ -204,6 +179,27 @@ app.post("/products", async (req, res) => {
   }
 });
 
+// Get all lab entries
+app.get("/labs", async (req, res) => {
+  try {
+    const labs = await Lab.find();
+    res.status(200).json(labs);
+  } catch (err) {
+    res.status(500).send("Server error. Could not fetch labs.");
+  }
+});
+
+// Post multiple lab entries via the addLabs function
+app.post("/labs", async (req, res) => {
+  try {
+    await addLabs(req.body); // Call the function to add labs
+    res.status(201).send("Labs submitted and saved to database.");
+  } catch (err) {
+    console.error("Error saving labs:", err);
+    res.status(500).send("Server error. Could not submit labs.");
+  }
+});
+
 // Sell a product
 app.post("/sell-product", async (req, res) => {
   const { productId, quantity } = req.body;
@@ -225,6 +221,85 @@ app.post("/sell-product", async (req, res) => {
     res.status(200).send(`Successfully sold ${quantity} units of ${product.name}`);
   } catch (err) {
     res.status(500).send("Server error. Could not sell the product.");
+  }
+});
+
+app.post('/create-order', async (req, res) => {
+  const { amount, currency } = req.body;
+  const options = {
+    amount: amount * 100, // Razorpay expects amount in paise
+    currency: currency,
+    receipt: `receipt_order_${Math.random() * 1000}`,
+  };
+
+  try {
+    const order = await razorpayInstance.orders.create(options);
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
+
+app.post('/verify-payment', (req, res) => {
+  const { razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body;
+
+  const body = razorpayOrderId + '|' + razorpayPaymentId;
+  const expectedSignature = crypto
+    .createHmac('sha256', 'YOUR_RAZORPAY_SECRET')
+    .update(body.toString())
+    .digest('hex');
+
+  if (expectedSignature === razorpaySignature) {
+    res.send({ success: true });
+  } else {
+    res.status(400).send({ success: false });
+  }
+});
+
+app.get("/mind", async (req, res) => {
+  const { page = 1, limit = 10 } = req.query;
+
+  try {
+    const minds = await Mind.find()
+      .limit(limit * 1) // Convert limit to a number
+      .skip((page - 1) * limit)
+      .exec();
+    const count = await Mind.countDocuments();
+
+    res.status(200).json({
+      minds,
+      totalPages: Math.ceil(count / limit),
+      currentPage: parseInt(page),
+    });
+  } catch (err) {
+    console.error("Error fetching minds:", err);
+    res.status(500).send("Server error. Could not fetch minds.");
+  }
+});
+
+
+app.post("/mind", async (req, res) => {
+  const mindsArray = req.body;
+
+  if (!Array.isArray(mindsArray) || mindsArray.length === 0) {
+    return res.status(400).send("Invalid data. An array of minds is required.");
+  }
+
+  // Validate that each mind object has the necessary fields
+  const isValid = mindsArray.every((mind) =>
+    mind.Name && mind.description && mind.image && mind.videoUrl
+  );
+
+  if (!isValid) {
+    return res.status(400).send("Each mind must have Name, description, image, and videoUrl.");
+  }
+
+  try {
+    await addMinds(mindsArray);
+    res.status(201).send("Minds submitted and saved to the database.");
+  } catch (err) {
+    console.error("Error saving minds:", err);
+    res.status(500).send("Server error. Could not submit minds.");
   }
 });
 

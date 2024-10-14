@@ -1,0 +1,257 @@
+/* Lab.css */
+
+/* Container styles */
+.header1{
+    color: #fff;
+}
+.lab-container {
+    padding: 20px;
+    background-color: #242424;
+    min-height: 100vh;
+  }
+  
+  .lab-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .lab-header {
+    font-size: 24px;
+    color: #ffffff;
+  }
+  
+  .drawer-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .drawer-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Notification styles */
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+  }
+  
+  .notification.success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .notification.error {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  /* Overlay for drawer */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+  }
+  
+  .overlay.show {
+    display: block;
+  }
+  
+  /* Drawer styles */
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #242424;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .drawer.open {
+    right: 0;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .drawer-header {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .record-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .record-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+  
+  .clear-records-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .clear-records-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Experiment card styles */
+  .experiment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .experiment-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .experiment-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .experiment-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .experiment-card textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  .record-observation-btn,
+  .add-to-records-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .record-observation-btn:hover,
+  .add-to-records-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Pagination styles */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .prev-btn,
+  .next-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .prev-btn:disabled,
+  .next-btn:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .prev-btn:hover:not(:disabled),
+  .next-btn:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .pagination span {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  .original-price {
+    text-decoration: line-through;
+    color: #888; /* Optional: A lighter color for the original price */
+    margin-right: 8px;
+}
+
+.sale-price {
+    color: #e53935; /* Optional: A brighter color for the sale price */
+    font-weight: bold;
+}
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    width: 400px; /* Width of the search input */
+    transition: border-color 0.3s ease; /* Smooth border color transition */
+    font-size: 16px; /* Font size */
+}
+
+/* Focus state */
+.search-input:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue glow effect */
+}
+
+/* Placeholder text styling */
+.search-input::placeholder {
+    color: #999; /* Light gray color for placeholder text */
+    font-style: italic; /* Italicize placeholder text */
+}

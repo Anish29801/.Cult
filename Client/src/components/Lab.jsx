@@ -1,132 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './css/Lab.css';
+import './css/Shop.css';
 
 const Lab = () => {
-    const [experiments, setExperiments] = useState([]);
-    const [observations, setObservations] = useState({});
-    const [recordedObservations, setRecordedObservations] = useState([]);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [notification, setNotification] = useState(null);
-    const [notificationType, setNotificationType] = useState('');
+    const [products, setProducts] = useState([]);
+    const [quantities, setQuantities] = useState({});
+    const [cart, setCart] = useState([]); // State to track cart items
+    const [isCartOpen, setIsCartOpen] = useState(false); // State to toggle cart drawer
+    const [popupMessage, setPopupMessage] = useState(null); // State for popup message
+    const [popupType, setPopupType] = useState(''); // State for popup type ('success' or 'error')
     const [currentPage, setCurrentPage] = useState(1);
-    const experimentsPerPage = 8;
+    const [searchTerm, setSearchTerm] = useState(''); // State for search term
+    const productsPerPage = 8;
 
-    // New state variables for search and sort
-    const [searchQuery, setSearchQuery] = useState('');
-    const [sortOption, setSortOption] = useState('');
-
+    // Fetch products on component mount
     useEffect(() => {
-        const fetchExperiments = async () => {
+        const fetchProducts = async () => {
             try {
                 const response = await axios.get('http://localhost:4000/labs');
-                setExperiments(response.data);
+                setProducts(response.data);
             } catch (error) {
-                console.error('Error fetching experiments:', error);
+                console.error('Error fetching products:', error);
             }
         };
-        fetchExperiments();
+        fetchProducts();
     }, []);
 
-    const handleObservationChange = (experimentId, newObservation) => {
-        setObservations((prevObservations) => ({
-            ...prevObservations,
-            [experimentId]: newObservation,
+    // Handle quantity change for products
+    const handleQuantityChange = (productId, newQuantity) => {
+        setQuantities((prevQuantities) => ({
+            ...prevQuantities,
+            [productId]: newQuantity,
         }));
     };
 
-    const handleRecordObservation = async (experiment) => {
-        const observation = observations[experiment._id] || '';
-
-        try {
-            await axios.post('http://localhost:4000/labs', {
-                experimentId: experiment._id,
-                observation,
-            });
-            setNotification(`Observation recorded for ${experiment.testName}`);
-            setNotificationType('success');
-        } catch (error) {
-            setNotification('Could not record observation. Please try again.');
-            setNotificationType('error');
-        }
-
-        setTimeout(() => {
-            setNotification(null);
-        }, 3000);
+    // Handle search input change
+    const handleSearch = (searchTerm) => {
+        setSearchTerm(searchTerm);
     };
 
-    const handleAddToRecord = (experiment) => {
-        const observation = observations[experiment._id] || '';
-        const record = { ...experiment, observation };
-
-        setRecordedObservations((prevRecords) => {
-            const existingRecord = prevRecords.find((item) => item._id === experiment._id);
-            if (existingRecord) {
-                return prevRecords.map((item) =>
-                    item._id === experiment._id
-                        ? { ...item, observation: observation }
-                        : item
-                );
-            } else {
-                return [...prevRecords, record];
-            }
-        });
-
-        setNotification(`Observation for ${experiment.testName} added to records.`);
-        setNotificationType('success');
-
-        setTimeout(() => {
-            setNotification(null);
-        }, 3000);
-    };
-
-    const handleClearRecords = () => {
-        setRecordedObservations([]);
-        setNotification('All records cleared!');
-        setNotificationType('success');
-
-        setTimeout(() => {
-            setNotification(null);
-        }, 3000);
-    };
-
-    const handleToggleDrawer = () => {
-        setIsDrawerOpen(!isDrawerOpen);
-    };
-
-    const handleCloseDrawer = () => {
-        setIsDrawerOpen(false);
-    };
-
-    const calculateTotalRecords = () => {
-        return recordedObservations.length;
-    };
-
-    const indexOfLastExperiment = currentPage * experimentsPerPage;
-    const indexOfFirstExperiment = indexOfLastExperiment - experimentsPerPage;
-
-    // Filter and sort experiments based on search query and sort option
-    const filteredExperiments = experiments
-        .filter((experiment) =>
-            experiment.testName.toLowerCase().includes(searchQuery.toLowerCase())
-        )
-        .sort((a, b) => {
-            if (sortOption === 'name') {
-                return a.testName.localeCompare(b.testName);
-            } else if (sortOption === 'priceLowHigh') {
-                return a.salePrice - b.salePrice;
-            } else if (sortOption === 'priceHighLow') {
-                return b.salePrice - a.salePrice;
-            } else {
-                return 0;
-            }
-        });
-
-    const currentExperiments = filteredExperiments.slice(
-        indexOfFirstExperiment,
-        indexOfLastExperiment
+    // Filter products based on search term
+    const filteredProducts = products.filter(product =>
+        product.testName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    const totalPages = Math.ceil(filteredExperiments.length / experimentsPerPage);
+
+    // Pagination logic
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
     const handleNextPage = () => {
         setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -137,71 +59,61 @@ const Lab = () => {
     };
 
     return (
-        <div className="lab-container">
-            <div className="lab-header-container">
-                <h2 className="lab-header">Lab Tests</h2>
+        <div className="shop-container">
+            {/* Header with Cart button */}
+            <div className="shop-header-container">
+                <h2 className="shop-header">Our Tests</h2>
                 <input
                     type="text"
-                    placeholder="Search for a test..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="search-input"
+                    placeholder="Search Tests..."
+                    className="search-bar"
+                    onChange={(e) => handleSearch(e.target.value)}
                 />
-                <button className="drawer-btn" onClick={handleToggleDrawer}>
-                    Records ({calculateTotalRecords()})
-                </button>
             </div>
 
-            {notification && (
-                <div className={`notification ${notificationType}`}>
-                    {notification}
+            {/* Popup Notification */}
+            {popupMessage && (
+                <div className={`popup ${popupType}`}>
+                    {popupMessage}
                 </div>
             )}
 
-            {isDrawerOpen && <div className="overlay show" onClick={handleCloseDrawer}></div>}
-
-            <div className={`drawer ${isDrawerOpen ? 'open' : ''}`}>
-                <button className="close-btn" onClick={handleCloseDrawer}>X</button>
-                {recordedObservations.length === 0 ? (
-                    <p>No recorded observations</p>
+            {/* Product List */}
+            <div className="product-grid">
+                {currentProducts.length === 0 ? (
+                    <p>No products available at the moment.</p>
                 ) : (
-                    <ul className="record-items">
-                        {recordedObservations.map((item) => (
-                            <li key={item._id} className="record-item">
-                                <span>{item.testName}</span>
-                                <span>Observation: {item.observation}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                <button className="clear-records-btn" onClick={handleClearRecords}>
-                    Clear Records
-                </button>
-            </div>
-
-            <div className="experiment-grid">
-                {currentExperiments.length === 0 ? (
-                    <p>No experiments available at the moment.</p>
-                ) : (
-                    currentExperiments.map((experiment) => (
-                        <div key={experiment._id} className="experiment-card">
-                            <img src={experiment.image} alt={experiment.testName} className="product-image" />
-                            <h3>{experiment.testName}</h3>
-                            <p>{experiment.description}</p>
-                            <p> Original Price - Rs. <span className="original-price">{experiment.originalPrice}</span></p>
-                            <p className="sale-price">Sale Price - Rs. {experiment.salePrice}</p>
+                    currentProducts.map((product) => (
+                        <div key={product._id} className="product-card">
+                            <img src={product.image} alt={product.name} className="product-image" />
+                            <h3>{product.testName}</h3>
+                            <p style={{ textDecoration: 'line-through', color: '#888', fontSize: '14px' }}>
+                                Original Price: Rs. {product.originalPrice}
+                            </p>
+                            <p>Sale Price: Rs. {product.salePrice}</p>
+                            <div className="quantity-input">
+                                <input
+                                    type="number"
+                                    id={`quantity-${product._id}`}
+                                    min="1"
+                                    max={product.quantity}
+                                    value={quantities[product._id] || 1}
+                                    onChange={(e) => handleQuantityChange(product._id, e.target.value)}
+                                />
+                            </div>
 
                             <button
-                                className="add-to-records-btn"
-                                onClick={() => handleAddToRecord(experiment)}
+                                className="buy-now-btn"
+                                onClick={() => handleBuyNow(product)}
                             >
-                                Book Test
+                                Buy Now
                             </button>
                         </div>
                     ))
                 )}
             </div>
 
+            {/* Pagination controls */}
             <div className="pagination">
                 <button
                     className="prev-btn"
@@ -210,7 +122,7 @@ const Lab = () => {
                 >
                     Prev
                 </button>
-                <span className='header1'>Page {currentPage} of {totalPages}</span>
+                <span>Page {currentPage} of {totalPages}</span>
                 <button
                     className="next-btn"
                     onClick={handleNextPage}

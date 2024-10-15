@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/Shop.css';
+import BuyOneGetOneBanner from './BuyOneGetOneBanner';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -153,6 +154,7 @@ const Shop = () => {
 
   return (
     <div className="shop-container">
+      <BuyOneGetOneBanner />
       {/* Header with Cart button */}
       <div className="shop-header-container">
         <h2 className="shop-header">Our Products</h2>
@@ -185,7 +187,7 @@ const Shop = () => {
               {cart.map((item) => (
                 <li key={item._id} className="cart-item">
                   <span>{item.name}</span>
-                  <span>{item.quantity} x Rs. {item.price}</span>
+                  <span>{item.quantity *2} x Rs. {item.price}</span>
                 </li>
               ))}
             </ul>
@@ -218,9 +220,9 @@ const Shop = () => {
                 <input
                   type="number"
                   id={`quantity-${product._id}`}
-                  min="1"
+                  min="2"
                   max={product.quantity}
-                  value={quantities[product._id] || 1}
+                  value={quantities[product._id] || 2}
                   onChange={(e) => handleQuantityChange(product._id, e.target.value)}
                 />
               </div>

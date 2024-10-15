@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/Mind.css';
+import FestiveDiscountBanner from './FestiveDiscountBanner';
 
 const Mind = () => {
     const [experiments, setExperiments] = useState([]);
@@ -138,6 +139,7 @@ const Mind = () => {
 
     return (
         <div className="lab-container">
+            <FestiveDiscountBanner />
             <div className="lab-header-container">
                 <h2 className="lab-header">Relax Your Mind </h2>
                 <input
@@ -185,7 +187,7 @@ const Mind = () => {
                 ) : (
                     currentExperiments.map((experiment) => (
                         <div key={experiment._id} className="experiment-card">
-                            <a href={experiment.videoUrl} target="_blank" rel="noopener noreferrer" className="image-container">
+                            <a href={experiment.videoUrl} target="_top" rel="noopener noreferrer" className="image-container">
                                 <img src={experiment.image} alt={experiment.Name} className="product-image" />
 
                                 {/* Play Icon */}

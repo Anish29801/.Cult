@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './css/BMI.css'; 
 import fitnessImage from "./css/img/fitness1.svg"; // Import the image
+import SaleTimerBanner from './SaleTimerBanner';
 
 const BMI = () => {
   const [gender, setGender] = useState(''); // State for gender
@@ -109,6 +110,7 @@ const BMI = () => {
           you're within a healthy weight range. It’s an important tool for identifying potential health 
           risks related to being underweight, overweight, or obese.
         </p>
+        <SaleTimerBanner />
         <h3 className='header'>Why is BMI Important?</h3>
         <p>
           BMI helps you understand whether your body weight is appropriate for your height. While it’s 

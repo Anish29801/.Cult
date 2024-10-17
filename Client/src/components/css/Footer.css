@@ -1,33 +1,33 @@
 /* Footer general styling */
 .footer {
-    background-color: #242424;
-    padding: 20px 0;
-    text-align: center;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-  
+  background: rgba(36, 36, 36, 0.7);
+  /* Adds dark overlay */
+  padding: 20px 0;
+  text-align: center;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.footer-content a {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .footer-content p {
-    margin: 5px 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
-  
-  .footer-content a {
-    color: #1e90ff;
-    text-decoration: none;
-  }
-  
-  .footer-content a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .footer-content p {
-      font-size: 0.9rem;
-    }
-  }
-  
+}

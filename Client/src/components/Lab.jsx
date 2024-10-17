@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/Shop.css';
-import FestiveDiscountBanner from './FestiveDiscountBanner';
+import SuperSaverSaleBanner from './SuperSaverSaleBanner';
 
 const Lab = () => {
     const [products, setProducts] = useState([]);
@@ -61,7 +61,6 @@ const Lab = () => {
 
     return (
         <div className="shop-container">
-            <FestiveDiscountBanner />
             {/* Header with Cart button */}
             <div className="shop-header-container">
                 <h2 className="shop-header">Our Tests</h2>

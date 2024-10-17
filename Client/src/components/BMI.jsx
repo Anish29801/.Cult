@@ -8,12 +8,23 @@ const BMI = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [bmi, setBMI] = useState(null);
+  const [error, setError] = useState(''); // State for error message
 
   const calculateBMI = () => {
-    const calculatedBMI = (weight / (height * height)).toFixed(2);
+    const weightValue = parseFloat(weight);
+    const heightValue = parseFloat(height);
+  
+    if (isNaN(weightValue) || isNaN(heightValue) || weightValue <= 0 || heightValue <= 0) {
+      setError('Please enter valid positive numbers for weight and height.');
+      setBMI(null);
+      return;
+    }
+  
+    const calculatedBMI = (weightValue / (heightValue * heightValue)).toFixed(2);
     setBMI(calculatedBMI);
+    setError(''); // Clear error if successful
   };
-
+  
   const getBMICategory = () => {
     if (bmi < 16) {
       return "Severely Underweight";
@@ -21,12 +32,12 @@ const BMI = () => {
       return "Underweight";
     } else if (bmi >= 18.5 && bmi <= 24.9) {
       if (gender === 'female' && bmi > 24) {
-        return "High Normal weight"; // Small adjustment for females
+        return "High Normal weight";
       }
       return "Normal weight";
     } else if (bmi >= 25 && bmi <= 29.9) {
       if (gender === 'male' && bmi > 27) {
-        return "High Overweight"; // Small adjustment for males
+        return "High Overweight";
       }
       return "Overweight";
     } else {
@@ -35,7 +46,7 @@ const BMI = () => {
   };
 
   return (
-    <>
+    <div className='con'>
       <div className="bmi-container">
         {/* Image on the left */}
         <div className="bmi-image">
@@ -60,6 +71,7 @@ const BMI = () => {
             </select>
           </div>
 
+          {/* Weight Input */}
           <div className="input-group">          
             <label htmlFor="weight" className='header'>Weight (kg):</label>
             <input
@@ -68,21 +80,31 @@ const BMI = () => {
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
               placeholder="Enter weight in kg"
+              min="1" // Ensures positive values
             />
           </div>
+
+          {/* Height Input */}
           <div className="input-group">
-            <label htmlFor="height" className='header'>Height (m):</label> {/* Changed to meters */}
+            <label htmlFor="height" className='header'>Height (m):</label>
             <input
               type="number"
               id="height"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              placeholder="Enter height in meters" /* Changed placeholder */
-              step="0.01" /* Allows more precision for meters */
+              placeholder="Enter height in meters"
+              step="0.01"
+              min="0.1" // Ensures positive values
             />
           </div>
+
+          {/* Calculate Button */}
           <button onClick={calculateBMI} className="calculate-btn">Calculate BMI</button>
 
+          {/* Display error message if inputs are invalid */}
+          {error && <p className="error-message">{error}</p>}
+
+          {/* Display BMI result */}
           {bmi && (
             <div className="bmi-result">
               <h3 className='header'>Your BMI: {bmi}</h3>
@@ -110,7 +132,9 @@ const BMI = () => {
           you're within a healthy weight range. It’s an important tool for identifying potential health 
           risks related to being underweight, overweight, or obese.
         </p>
+        <br/>
         <SaleTimerBanner />
+        <br/>
         <h3 className='header'>Why is BMI Important?</h3>
         <p>
           BMI helps you understand whether your body weight is appropriate for your height. While it’s 
@@ -119,7 +143,7 @@ const BMI = () => {
           well-being and longevity.
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

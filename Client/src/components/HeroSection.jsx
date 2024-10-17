@@ -1,6 +1,5 @@
 import React from 'react';
 import './css/HeroSection.css';
-import fitnessImage from './css/img/fitness.svg';
 
 const HeroSection = () => {
   return (
@@ -15,7 +14,6 @@ const HeroSection = () => {
         </a>
       </div>
       <div className="hero-image">
-        <img src={fitnessImage} alt="Sports Action" />
       </div>
     </section>
   );

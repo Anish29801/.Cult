@@ -25,7 +25,6 @@ const App = () => {
                 <SaleTimerBanner/>
                 <AboutUs />
                 <CultComponent/>
-                <ContactUs />
                 <Footer />
               </>
             }
@@ -35,8 +34,8 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/lab" element={<Lab />} />
           <Route path="/mind" element={<Mind />} />
-
-
+          {/* Optional: Catch-all for undefined routes */}
+          <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
       </div>
     </Router>

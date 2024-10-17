@@ -10,7 +10,6 @@ const AboutUs = () => {
       <div className="about-content">
         <h2>About Us</h2>
         <p>
-          <img src={teamImage} alt="Our Team" className="inline-image" />
           At <strong>.Cult</strong>, we’re passionate about helping athletes of all skill levels achieve their
           dreams. Whether you're just starting out or you're a seasoned professional, we believe that every athlete has
           the potential to improve, and we're here to support that journey. Founded over a decade ago, we have consistently
@@ -30,7 +29,6 @@ const AboutUs = () => {
           unlock their full potential. Whether you want to improve your endurance, sharpen your skills, or recover from an
           injury, we’re here to help. At <strong>.Cult</strong>, you're not just a member – you're a part of a
           global network of athletes who are all working together to achieve greatness.
-          <img src={techImage1} alt="Advanced Technology" className="inline-image" />
         </p>
       </div>
 

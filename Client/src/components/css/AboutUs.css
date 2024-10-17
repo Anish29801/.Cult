@@ -1,4 +1,4 @@
-/* General about us section styling */
+/* General About Us Section Styling */
 .about-us {
     padding: 50px;
     background-color: #242424;
@@ -8,26 +8,29 @@
 
 .about-content {
     max-width: 900px;
+    margin: 0 auto; /* Center the content */
     margin-bottom: 50px;
+}
+
+.inline-image-left,
+.inline-image-right {
+    max-width: 150px;
+    border-radius: 8px;
 }
 
 .inline-image-left {
     float: left;
     margin-right: 15px;
-    max-width: 150px;
-    border-radius: 8px;
-  }
-  
-  .inline-image-right {
+}
+
+.inline-image-right {
     float: right;
     margin-left: 15px;
-    max-width: 150px;
-    border-radius: 8px;
-  }
-  
+}
+
 .about-content h2 {
     font-size: 2.5rem;
-    color: #1e90ff;
+    color: #FFD700;
     margin-bottom: 20px;
 }
 
@@ -38,7 +41,7 @@
 }
 
 .about-content strong {
-    color: #1e90ff;
+    color: #FFD700;
 }
 
 /* Plan Section */
@@ -49,13 +52,14 @@
 .about-plans h3 {
     font-size: 2rem;
     margin-bottom: 30px;
-    color: #1e90ff;
+    color: #FFD700;
 }
 
 .plans-container {
     display: flex;
     justify-content: space-around;
     gap: 20px;
+    flex-wrap: wrap; /* Ensures wrapping on smaller screens */
 }
 
 .plan-card {
@@ -70,7 +74,7 @@
 
 .plan-card h4 {
     font-size: 1.8rem;
-    color: #1e90ff;
+    color: #FFD700;
     margin-bottom: 15px;
 }
 
@@ -104,13 +108,13 @@
     height: 20px;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%231e90ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"/></svg>');
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"/></svg>');
 }
 
-/* Button styling */
+/* Button Styling */
 .plan-btn {
     padding: 10px 20px;
-    background-color: #1e90ff;
+    background-color: #FFD700;
     color: white;
     border: none;
     border-radius: 5px;
@@ -120,18 +124,25 @@
 }
 
 .plan-btn:hover {
-    background-color: #0c6ebe;
+    background-color: #d2ed09;
 }
 
-/* Card hover effect */
+/* Card Hover Effect */
 .plan-card:hover {
     transform: scale(1.05);
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .about-content {
         text-align: center;
+    }
+
+    .inline-image-left,
+    .inline-image-right {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
     }
 
     .plans-container {

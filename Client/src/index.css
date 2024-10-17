@@ -14,7 +14,7 @@
   
   /* Styling for links */
   a {
-    color: #1e90ff; /* Blue color for links */
+    color: #FFD700; /* Blue color for links */
     text-decoration: none;
   }
   
@@ -24,7 +24,7 @@
   
   /* Basic styling for buttons */
   button {
-    background-color: #1e90ff; /* Blue button color */
+    background-color: #FFD700; /* Blue button color */
     color: #ffffff;
     padding: 10px 20px;
     border: none;

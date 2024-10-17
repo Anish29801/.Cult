@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+/* FAQ Container Styling */
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
@@ -7,29 +8,53 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* FAQ Item Styling */
 .faq-item {
   margin-bottom: 20px;
   padding: 15px;
-  border-bottom: 1px solid #1e90ff;
+  border-bottom: 1px solid #FFD700;
   position: relative;
+  transition: background-color 0.5s ease; /* Smooth background color change */
 }
 
+/* FAQ Question Styling */
 .faq-question {
   font-size: 1.2em;
-  font-weight: 600; /* Bold */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  font-weight: 700;
+  font-weight: 700; /* Bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  color: #FFD700; /* Blue color for the question */
+  transition: color 0.5s ease; /* Smooth transition for text color */
 }
 
+/* FAQ Answer Styling */
 .faq-answer {
   font-size: 1em;
-  font-weight: 400; /* Normal */
+  font-weight: 400; /* Normal weight for the answer */
   color: #ffffff;
-  display: none; /* Initially hide the answer */
-  margin-top: 10px; /* Add some spacing */
+  display: none; /* Hidden by default */
+  margin-top: 10px; /* Spacing above the answer */
+  transition: max-height 0.6s ease, opacity 0.6s ease; /* Smooth and slower reveal */
+  overflow: hidden;
+  max-height: 0; /* Initially collapsed */
+  opacity: 0; /* Initially transparent */
+
 }
 
+/* FAQ Answer Hover/Focus Reveal */
 .faq-item:hover .faq-answer,
 .faq-item:focus-within .faq-answer {
   display: block; /* Show answer on hover or focus */
+  max-height: 500px; /* Allow space for the answer */
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .faq-question {
+    font-size: 1.1em;
+  }
+
+  .faq-answer {
+    font-size: 0.95em;
+  }
 }

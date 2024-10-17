@@ -8,14 +8,18 @@
   align-items: center;
   padding: 15px 30px;
   font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+  background-color: #242424; /* Dark background for the navbar */
+  position: relative;
+  z-index: 100;
 }
 
 /* Logo styling */
 .logo h2 {
   margin: 0;
   font-size: 1.8rem;
-  font-weight: bold;
-  color: #1e90ff; /* Blue text color */
+  font-weight: 600; /* Semi-bold for better emphasis */
+  color: #FFD700; /* Blue text color */
 }
 
 /* Styling for the list of links */
@@ -23,26 +27,38 @@
   list-style: none;
   display: flex;
   gap: 40px;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  color: #0c6ebe;
 }
 
 .nav-links li a {
-  color: #1e90ff; /* Blue text color */
+  color: #e0e0e0; /* Light gray text color */
   text-decoration: none;
   font-size: 1.1rem;
+  font-weight: 500; /* Medium weight for better readability */
 }
 
 .nav-links li a:hover {
   color: #0c6ebe; /* Darker blue on hover */
 }
 
-li:hover{
+li:hover {
   cursor: pointer;
 }
+
+/* Call Now button */
 .call-now-btn {
   background-color: transparent;
-  color: #1e90ff; /* Blue text color */
+  color: #FFD700; /* Blue text color */
   padding: 10px 20px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #FFD700;
   border-radius: 5px;
   font-size: 1.1rem;
   cursor: pointer;
@@ -50,18 +66,74 @@ li:hover{
 }
 
 .call-now-btn:hover {
-  background-color: #1e90ff; /* Blue background on hover */
-  color: white; /* White text on hover */
+  background-color: #FFD700; /* Blue background on hover */
+  color: #242424; /* Dark background text on hover */
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #FFD700;
+  margin: 4px 0;
+  transition: all 0.3s ease;
 }
 
 /* Responsive styling */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
+    align-items: flex-start;
+  }
+  .call-now-btn{
+    display: none;
+  }
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #242424;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Adjust gap for better spacing on mobile */
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+    color: #FFD700; /* Blue text color */
+
   }
 
-  .nav-links {
-    margin-top: 15px;
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 15px;
+    list-style: none; /* Removes bullet points */
+  }
+
+  /* Increase the font size for list items */
+  .nav-links li a {
+    font-size: 1.4rem;
+    color: #FFD700; /* Blue text color */
+    /* Increase font size for smaller screens */
+  }
+
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 15px;
+    right: 30px;
   }
 
   .call-now-btn {

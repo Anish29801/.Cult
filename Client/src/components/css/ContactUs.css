@@ -4,7 +4,7 @@
     background-color: #242424;
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
-    max-width: 800px;
+    width: 100vh;
     margin: 0 auto;
     text-align: center;
     border-radius: 10px;
@@ -13,7 +13,7 @@
   
   .contact-us h2 {
     font-size: 2.5rem;
-    color: #1e90ff;
+    color: #FFD700;
     margin-bottom: 20px;
   }
   
@@ -54,12 +54,12 @@
   
   .form-group input:focus,
   .form-group textarea:focus {
-    border-color: #1e90ff;
+    border-color: #FFD700;
   }
   
   .submit-btn {
     padding: 12px 20px;
-    background-color: #1e90ff;
+    background-color: #FFD700;
     color: white;
     border: none;
     border-radius: 5px;

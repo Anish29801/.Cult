@@ -1,28 +1,38 @@
 /* Import Poppins font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-/* General hero section styling */
+/* General body and hero section styling */
+body {
+  background: url('https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&w=600') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 50px;
   height: 90vh;
-  background-color: #242424; /* Light grey background */
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero content styling */
 .hero-content {
   max-width: 600px;
-  z-index: 1;
+  z-index: 2; /* Ensure content is above the image */
   animation: fadeInLeft 1s ease-in-out;
 }
 
 .hero-title {
   font-size: 3rem;
-  color: #1e90ff; /* Blue color */
+  color: #FFD700; /* Blue color */
   margin-bottom: 20px;
   animation: slideInDown 1s ease-in-out;
 }
@@ -37,7 +47,7 @@
 
 .hero-btn {
   padding: 15px 30px;
-  background-color: #1e90ff;
+  background-color: #FFD700;
   color: white;
   border: none;
   border-radius: 5px;
@@ -56,6 +66,19 @@
 .hero-image img {
   max-width: 500px;
   animation: fadeInRight 1s ease-in-out;
+  z-index: 2;
+}
+
+/* Ensure hero image and content are above background */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.7); /* Adds dark overlay */
+  z-index: 1;
 }
 
 /* Animations */

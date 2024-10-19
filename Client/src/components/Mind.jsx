@@ -13,7 +13,6 @@ const Mind = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const experimentsPerPage = 8;
 
-    // New state variables for search and sort
     const [searchQuery, setSearchQuery] = useState('');
     const [sortOption, setSortOption] = useState('');
 
@@ -106,7 +105,6 @@ const Mind = () => {
     const indexOfLastExperiment = currentPage * experimentsPerPage;
     const indexOfFirstExperiment = indexOfLastExperiment - experimentsPerPage;
 
-    // Filter and sort experiments based on search query and sort option
     const filteredExperiments = experiments
         .filter((experiment) =>
             experiment.Name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -139,19 +137,15 @@ const Mind = () => {
 
     return (
         <div className="lab-container">
-            <FestiveDiscountBanner />
             <div className="lab-header-container">
-                <h2 className="lab-header">Relax Your Mind </h2>
+                <h2 className="lab-header">Relax Your Mind</h2>
                 <input
                     type="text"
-                    placeholder="Search for a Videos"
+                    placeholder="Search for a Video"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="search-input"
                 />
-                <button className="drawer-btn" onClick={handleToggleDrawer}>
-                    Records ({calculateTotalRecords()})
-                </button>
             </div>
 
             {notification && (
@@ -189,19 +183,14 @@ const Mind = () => {
                         <div key={experiment._id} className="experiment-card">
                             <a href={experiment.videoUrl} target="_top" rel="noopener noreferrer" className="image-container">
                                 <img src={experiment.image} alt={experiment.Name} className="product-image" />
-
-                                {/* Play Icon */}
                                 <div className="play-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
                                 </div>
                             </a>
-
-                            <p>{experiment.description}</p>
+                            <p className='desc'>{experiment.description}</p>
                         </div>
-
-
                     ))
                 )}
             </div>

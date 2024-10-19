@@ -34,6 +34,7 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/lab" element={<Lab />} />
           <Route path="/mind" element={<Mind />} />
+          <Route path='/contact-us' element={<ContactUs />} />
           {/* Optional: Catch-all for undefined routes */}
           <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>

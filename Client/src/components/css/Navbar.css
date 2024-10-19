@@ -35,18 +35,18 @@
   display: flex;
   gap: 40px;
   list-style: none;
-  color: #0c6ebe;
+  color: #FFD700;
 }
 
 .nav-links li a {
   color: #e0e0e0; /* Light gray text color */
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 500; /* Medium weight for better readability */
 }
 
 .nav-links li a:hover {
-  color: #0c6ebe; /* Darker blue on hover */
+  color: #FFD700; /* Darker blue on hover */
 }
 
 li:hover {

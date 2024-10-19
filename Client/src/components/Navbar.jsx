@@ -57,6 +57,14 @@ const Navbar = () => {
               Mind
             </NavLink>
           </li>
+          <li>
+            <NavLink 
+              to="/contact-us"
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              Contact Us
+            </NavLink>
+          </li>
         </ul>
       </div>
       <button className="call-now-btn">

@@ -1,93 +1,74 @@
-/* General Contact Us Section Styling */
 .contact-us {
-    padding: 50px;
-    background-color: #242424;
-    font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    width: 100vh;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contact-us h2 {
-    font-size: 2.5rem;
-    color: #FFD700;
-    margin-bottom: 20px;
-  }
-  
-  .contact-us p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #ffffff;
-  }
-  
-  /* Contact Form */
-  .contact-form {
-    display: flex;
+  padding: 20px;
+  background-color: rgba(36, 36, 36, 0.7); /* Increased transparency */
+}
+
+.contact-us h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-form {
+  flex: 1;
+  padding: 20px;
+  background-color: rgba(32, 32, 32, 0.2); /* Dark background with transparency */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+  flex: 1;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1c86ee;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #1c86ee;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .contact-container {
     flex-direction: column;
-    gap: 20px;
   }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+
+  .map-container {
+    height: 300px;
   }
-  
-  .form-group label {
-    font-size: 1rem;
-    color: #ffff;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #FFD700;
-  }
-  
-  .submit-btn {
-    padding: 12px 20px;
-    background-color: #FFD700;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0c6ebe;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .contact-us {
-      padding: 30px;
-    }
-  
-    .contact-us h2 {
-      font-size: 2rem;
-    }
-  
-    .contact-us p {
-      font-size: 1rem;
-    }
-  
-    .submit-btn {
-      font-size: 1rem;
-    }
-  }
-  
+}

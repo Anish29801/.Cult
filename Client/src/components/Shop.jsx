@@ -5,6 +5,7 @@ import BuyOneGetOneBanner from './BuyOneGetOneBanner';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
   const [quantities, setQuantities] = useState({});
   const [cart, setCart] = useState([]); // State to track cart items
   const [isCartOpen, setIsCartOpen] = useState(false); // State to toggle cart drawer
@@ -12,6 +13,7 @@ const Shop = () => {
   const [popupType, setPopupType] = useState(''); // State for popup type ('success' or 'error')
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 8;
+  const [searchQuery, setSearchQuery] = useState(''); // State for search query
 
   // Fetch products on component mount
   useEffect(() => {
@@ -19,12 +21,22 @@ const Shop = () => {
       try {
         const response = await axios.get('http://localhost:4000/products');
         setProducts(response.data);
+        setFilteredProducts(response.data); // Initialize filtered products
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
     fetchProducts();
   }, []);
+
+  // Filter products based on search query
+  useEffect(() => {
+    const filtered = products.filter(product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+    setCurrentPage(1); // Reset to the first page when searching
+  }, [searchQuery, products]);
 
   // Handle quantity change for products
   const handleQuantityChange = (productId, newQuantity) => {
@@ -141,8 +153,8 @@ const Shop = () => {
   // Pagination logic
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  const totalPages = Math.ceil(products.length / productsPerPage);
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
@@ -155,9 +167,16 @@ const Shop = () => {
   return (
     <div className="shop-container">
       <BuyOneGetOneBanner />
-      {/* Header with Cart button */}
+      {/* Header with Cart button and Search bar */}
       <div className="shop-header-container">
         <h2 className="shop-header">Our Products</h2>
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-bar"
+        />
         <button className="cart-btn" onClick={handleCartClick}>
           Cart ({cart.length})
         </button>
@@ -187,7 +206,7 @@ const Shop = () => {
               {cart.map((item) => (
                 <li key={item._id} className="cart-item">
                   <span>{item.name}</span>
-                  <span>{item.quantity *2} x Rs. {item.price}</span>
+                  <span>{item.quantity} x Rs. {item.price}</span>
                 </li>
               ))}
             </ul>
@@ -220,9 +239,9 @@ const Shop = () => {
                 <input
                   type="number"
                   id={`quantity-${product._id}`}
-                  min="2"
+                  min="1"
                   max={product.quantity}
-                  value={quantities[product._id] || 2}
+                  value={quantities[product._id] || 1}
                   onChange={(e) => handleQuantityChange(product._id, e.target.value)}
                 />
               </div>

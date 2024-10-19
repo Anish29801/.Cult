@@ -14,18 +14,25 @@ const BMI = () => {
     const weightValue = parseFloat(weight);
     const heightValue = parseFloat(height);
   
+    // Check for valid positive numbers for weight and height
     if (isNaN(weightValue) || isNaN(heightValue) || weightValue <= 0 || heightValue <= 0) {
       setError('Please enter valid positive numbers for weight and height.');
       setBMI(null);
       return;
     }
-  
-    const calculatedBMI = (weightValue / (heightValue * heightValue)).toFixed(2);
-    setBMI(calculatedBMI);
+
+    // Height should be in meters for the formula, so check if input might be in centimeters
+    const heightInMeters = heightValue > 3 ? heightValue / 100 : heightValue;
+
+    // Calculate BMI
+    const calculatedBMI = (weightValue / (heightInMeters * heightInMeters)).toFixed(2);
+    setBMI(parseFloat(calculatedBMI)); // Convert to a number to ensure proper numeric display
     setError(''); // Clear error if successful
   };
-  
+
   const getBMICategory = () => {
+    if (bmi === null) return ''; // Prevent rendering if BMI is not calculated
+
     if (bmi < 16) {
       return "Severely Underweight";
     } else if (bmi >= 16 && bmi < 18.5) {
@@ -115,8 +122,13 @@ const BMI = () => {
                 <button className="call-doctor-btn">Call a Doctor</button>
               )}
 
+              {/* Show 'Start a Training Session' button for normal and above normal BMI */}
+              {bmi >= 18.5 && (
+                <button className="start-training-btn" style={{ backgroundColor: 'blue', color: 'white' }}>Start a Training Session</button>
+              )}
+
               {/* Book a session button for others */}
-              {bmi >= 16 && (
+              {bmi >= 16 && bmi < 18.5 && (
                 <button className="book-session-btn">Book a Session</button>
               )}
             </div>

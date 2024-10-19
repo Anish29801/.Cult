@@ -16,7 +16,7 @@
 
 .shop-header {
   font-size: 2em;
-  color: #ccc; /* Blue header */
+  color: FFD700; /* Blue header */
 }
 
 .cart-btn {
@@ -193,17 +193,32 @@
 .buy-now-cart-btn:hover, .clear-cart-btn:hover {
   opacity: 1; /* Full opacity on hover */
 }
-.add-to-cart-btn {
-  background-color: #ffa500; /* Orange hex color */
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  opacity: 0.9; /* Slight transparency */
-  margin-top: 10px;
+.shop-header-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Space between header and cart button */
+  padding: 10px; /* Add some padding */
 }
 
-.add-to-cart-btn:hover {
-  opacity: 1; /* Full opacity on hover */
+.search-bar {
+  flex-grow: 1; /* Allow the search bar to take available space */
+  max-width: 400px; /* Set a max width */
+  margin-left: 20px; /* Space between the header and search bar */
+  padding: 10px; /* Add padding for better appearance */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Increase font size for better readability */
+  transition: border-color 0.3s; /* Smooth border color transition */
+}
+
+.search-bar:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%; /* Full width on smaller screens */
+    margin-left: 10px; /* Adjust margin */
+  }
 }

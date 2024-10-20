@@ -1,102 +1,138 @@
 /* General Styling */
 .diet-container {
-    text-align: center;
-    background-color: rgba(36, 36, 36, 0.9); /* Dark background with transparency */
-    padding: 20px;
-    opacity: 0; /* Hidden initially */
-    animation: fadeIn 1s ease-in forwards; /* Fade in animation */
+  text-align: center;
+  background-color: rgba(36, 36, 36, 0.9); /* Dark background with transparency */
+  padding: 20px;
+  opacity: 0; /* Hidden initially */
+  animation: fadeIn 1s ease-in forwards; /* Fade-in animation */
+}
+
+.blog-post {
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px); /* Slightly slide up initially */
+  animation: slideUp 0.8s ease-in-out forwards; /* Slide up for blog posts */
+  animation-delay: 0.3s; /* Delay to start after the container animation */
+}
+
+/* Platforms Section */
+.platforms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Adds space between the logos */
+  margin-top: 20px;
+  opacity: 0; /* Hidden initially */
+  animation: fadeIn 1.2s ease-in forwards; /* Fade-in animation for platforms */
+  animation-delay: 0.6s; /* Delay to sync with the container */
+}
+
+/* Platform Logo */
+.platform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px; /* Space between logos */
+  transform: translateY(50px); /* Initial position */
+  opacity: 0; /* Hidden initially */
+  animation: slideUp 1s ease-in-out forwards; /* Slide up animation */
+  animation-delay: 0.8s; /* Delay to match other animations */
+}
+
+/* Logo Styling */
+.logo {
+  width: 100px; /* Default logo size */
+  height: auto;
+  margin-bottom: 10px;
+  opacity: 0; /* Hidden initially */
+  animation: fadeIn 1s ease-in forwards; /* Fade-in animation */
+  animation-delay: 0.9s; /* Slight delay for each logo */
+}
+
+/* Large Logo */
+.large-logo {
+  width: 150px; /* Adjust size for larger logos */
+  opacity: 0; /* Hidden initially */
+  animation: fadeIn 1.2s ease-in forwards; /* Fade-in animation for large logos */
+  animation-delay: 1.1s; /* Longer delay for large logo */
+}
+
+/* Book Button */
+.book-button {
+  background-color: #dbe210; /* Green background */
+  color: white; /* White text */
+  padding: 15px 30px; /* Increased padding for a larger button */
+  font-size: 18px; /* Slightly larger font for better readability */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  opacity: 0; /* Initially hidden */
+  animation: slideUp 0.8s ease-in-out forwards; /* Slide up into view */
+  animation-delay: 1.3s; /* Delay to match the flow */
+}
+
+.book-button:hover {
+  background-color: #f9d923; /* Yellow background on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.book-button:active {
+  background-color: #dbe210; /* Darker green when clicked */
+  transform: translateY(0); /* Reset lift when clicked */
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  /* Platforms Section */
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Adjust platforms layout for tablets and mobile devices */
   .platforms {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px; /* Adds space between the logos */
-    margin-top: 20px;
+    flex-direction: column; /* Stack logos vertically */
+    gap: 20px; /* Space between stacked logos */
   }
-  
-  /* Platform Logo */
-  .platform {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px; /* Space between logos */
-    transform: translateY(50px); /* Initial position */
-    opacity: 0; /* Hidden initially */
-    animation: slideUp 1s ease-in-out forwards; /* Slide up animation */
-    animation-delay: 0.5s; /* Delay to match other animations */
-  }
-  
-  /* Logo Styling */
+
   .logo {
-    width: 100px; /* Default logo size */
-    height: auto;
-    margin-bottom: 10px;
-    opacity: 0; /* Hidden initially */
-    animation: fadeIn 1s ease-in forwards; /* Fade in animation */
-    animation-delay: 0.7s; /* Slight delay for each logo */
+    width: 120px; /* Increase logo size for smaller screens */
   }
-  
-  /* Large Logo */
+
   .large-logo {
-    width: 150px; /* Adjust size for larger logos */
-    opacity: 0; /* Hidden initially */
-    animation: fadeIn 1.2s ease-in forwards; /* Fade in animation for large logos */
-    animation-delay: 1s; /* Longer delay for large logo */
+    width: 180px; /* Increase size for larger logos on smaller screens */
   }
-  
-  /* Keyframes for Animations */
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for mobile phones */
+  .diet-container {
+    padding: 15px; /* Less padding for smaller screens */
   }
-  
-  @keyframes slideUp {
-    0% {
-      transform: translateY(50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+
+  .logo {
+    width: 140px; /* Further increase logo size */
   }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    /* Adjust platforms layout for tablets and mobile devices */
-    .platforms {
-      flex-direction: column; /* Stack logos vertically */
-      gap: 20px; /* Space between stacked logos */
-    }
-  
-    .logo {
-      width: 120px; /* Increase logo size for smaller screens */
-    }
-  
-    .large-logo {
-      width: 180px; /* Increase size for larger logos on smaller screens */
-    }
+
+  .large-logo {
+    width: 200px; /* Further increase large logo size */
   }
-  
-  @media (max-width: 480px) {
-    /* Further adjustments for mobile phones */
-    .diet-container {
-      padding: 15px; /* Less padding for smaller screens */
-    }
-  
-    .logo {
-      width: 140px; /* Further increase logo size */
-    }
-  
-    .large-logo {
-      width: 200px; /* Further increase large logo size */
-    }
-  }
-  
+}

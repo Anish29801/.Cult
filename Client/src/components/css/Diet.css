@@ -1,0 +1,102 @@
+/* General Styling */
+.diet-container {
+    text-align: center;
+    background-color: rgba(36, 36, 36, 0.9); /* Dark background with transparency */
+    padding: 20px;
+    opacity: 0; /* Hidden initially */
+    animation: fadeIn 1s ease-in forwards; /* Fade in animation */
+  }
+  
+  /* Platforms Section */
+  .platforms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px; /* Adds space between the logos */
+    margin-top: 20px;
+  }
+  
+  /* Platform Logo */
+  .platform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px; /* Space between logos */
+    transform: translateY(50px); /* Initial position */
+    opacity: 0; /* Hidden initially */
+    animation: slideUp 1s ease-in-out forwards; /* Slide up animation */
+    animation-delay: 0.5s; /* Delay to match other animations */
+  }
+  
+  /* Logo Styling */
+  .logo {
+    width: 100px; /* Default logo size */
+    height: auto;
+    margin-bottom: 10px;
+    opacity: 0; /* Hidden initially */
+    animation: fadeIn 1s ease-in forwards; /* Fade in animation */
+    animation-delay: 0.7s; /* Slight delay for each logo */
+  }
+  
+  /* Large Logo */
+  .large-logo {
+    width: 150px; /* Adjust size for larger logos */
+    opacity: 0; /* Hidden initially */
+    animation: fadeIn 1.2s ease-in forwards; /* Fade in animation for large logos */
+    animation-delay: 1s; /* Longer delay for large logo */
+  }
+  
+  /* Keyframes for Animations */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    0% {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    /* Adjust platforms layout for tablets and mobile devices */
+    .platforms {
+      flex-direction: column; /* Stack logos vertically */
+      gap: 20px; /* Space between stacked logos */
+    }
+  
+    .logo {
+      width: 120px; /* Increase logo size for smaller screens */
+    }
+  
+    .large-logo {
+      width: 180px; /* Increase size for larger logos on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Further adjustments for mobile phones */
+    .diet-container {
+      padding: 15px; /* Less padding for smaller screens */
+    }
+  
+    .logo {
+      width: 140px; /* Further increase logo size */
+    }
+  
+    .large-logo {
+      width: 200px; /* Further increase large logo size */
+    }
+  }
+  

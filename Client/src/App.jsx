@@ -6,6 +6,7 @@ import BMI from './components/BMI.jsx';
 import Lab from './components/Lab.jsx';
 import Admin from './components/Admin.jsx';
 import Mind from './components/Mind.jsx';
+import Diet from './components/Diet.jsx';
 import CultComponent from './components/CultComponent.jsx';
 import SaleTimerBanner from './components/SaleTimerBanner.jsx';
 
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/shop" element={<Shop />} />
           <Route path="/lab" element={<Lab />} />
           <Route path="/mind" element={<Mind />} />
+          <Route path='/diet' element={<Diet />} />
           <Route path='/contact-us' element={<ContactUs />} />
           {/* Optional: Catch-all for undefined routes */}
           <Route path="*" element={<div>Page Not Found</div>} />

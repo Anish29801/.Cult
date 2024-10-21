@@ -70,6 +70,49 @@ input {
   border-radius: 5px;
 }
 
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-group label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFD700;
+  margin-bottom: 5px;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  appearance: none; /* Removes default dropdown arrow */
+}
+
+.input-group select:focus {
+  outline: none;
+  border-color: blue;
+}
+
+.input-group select:hover {
+  border-color: #003399;
+}
+
+.input-group select option {
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+}
+
+
 .calculate-btn {
   padding: 10px 20px;
   background-color: #10b981;

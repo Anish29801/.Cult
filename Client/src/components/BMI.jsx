@@ -9,11 +9,12 @@ const BMI = () => {
   const [height, setHeight] = useState('');
   const [bmi, setBMI] = useState(null);
   const [error, setError] = useState(''); // State for error message
+  const [unit, setUnit] = useState('metric'); // State for unit system
 
   const calculateBMI = () => {
     const weightValue = parseFloat(weight);
     const heightValue = parseFloat(height);
-  
+
     // Check for valid positive numbers for weight and height
     if (isNaN(weightValue) || isNaN(heightValue) || weightValue <= 0 || heightValue <= 0) {
       setError('Please enter valid positive numbers for weight and height.');
@@ -21,12 +22,20 @@ const BMI = () => {
       return;
     }
 
-    // Height should be in meters for the formula, so check if input might be in centimeters
-    const heightInMeters = heightValue > 3 ? heightValue / 100 : heightValue;
+    let calculatedBMI;
 
-    // Calculate BMI
-    const calculatedBMI = (weightValue / (heightInMeters * heightInMeters)).toFixed(2);
-    setBMI(parseFloat(calculatedBMI)); // Convert to a number to ensure proper numeric display
+    // Metric units (kg and meters)
+    if (unit === 'metric') {
+      const heightInMeters = heightValue > 3 ? heightValue / 100 : heightValue;
+      calculatedBMI = (weightValue / (heightInMeters * heightInMeters)).toFixed(2);
+    }
+
+    // Imperial units (lbs and inches)
+    if (unit === 'imperial') {
+      calculatedBMI = ((weightValue / (heightValue * heightValue)) * 703).toFixed(2);
+    }
+
+    setBMI(parseFloat(calculatedBMI));
     setError(''); // Clear error if successful
   };
 
@@ -63,7 +72,7 @@ const BMI = () => {
         {/* BMI form on the right */}
         <div className="bmi-form">
           <h2 className='header'>BMI Calculator</h2>
-          
+
           {/* Gender Dropdown */}
           <div className="input-group">
             <label htmlFor="gender" className='header'>Gender:</label>
@@ -78,28 +87,45 @@ const BMI = () => {
             </select>
           </div>
 
+          {/* Unit Selection Dropdown */}
+          <div className="input-group">
+            <label htmlFor="unit" className='header'>Units:</label>
+            <select
+              id="unit"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+            >
+              <option value="metric">Metric (kg, meters)</option>
+              <option value="imperial">Imperial (lbs, inches)</option>
+            </select>
+          </div>
+
           {/* Weight Input */}
-          <div className="input-group">          
-            <label htmlFor="weight" className='header'>Weight (kg):</label>
+          <div className="input-group">
+            <label htmlFor="weight" className='header'>
+              Weight ({unit === 'metric' ? 'kg' : 'lbs'}):
+            </label>
             <input
               type="number"
               id="weight"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              placeholder="Enter weight in kg"
+              placeholder={`Enter weight in ${unit === 'metric' ? 'kg' : 'lbs'}`}
               min="1" // Ensures positive values
             />
           </div>
 
           {/* Height Input */}
           <div className="input-group">
-            <label htmlFor="height" className='header'>Height (m):</label>
+            <label htmlFor="height" className='header'>
+              Height ({unit === 'metric' ? 'm' : 'inches'}):
+            </label>
             <input
               type="number"
               id="height"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              placeholder="Enter height in meters"
+              placeholder={`Enter height in ${unit === 'metric' ? 'meters' : 'inches'}`}
               step="0.01"
               min="0.1" // Ensures positive values
             />
